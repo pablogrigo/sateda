@@ -1,21 +1,20 @@
 {
-  "name": "Sateda - JS executor",
-  "version": "1.0",
-  "description": "Sateda executes your javascript code", 
-  
-  "permissions": [
-      "tabs"
-  ],
-  "background_page": "background.html",
-  "browser_action": {
-    "default_icon": "icon.png",
-    "popup": "popup.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["http://*/*"],
-      "js": ["jquery.js", "contentscript.js"],
-      "run_at": "document_end"
-    }
-  ] 
+    "name": "Sateda - JS executor",
+    "version": "1.0",
+    "description": "Sateda executes your custom javascript code automatically on each web site", 
+    "X-description": "For more information check http://stargate.wikia.com/wiki/Sateda",
+    
+    "permissions": [
+        "tabs"
+    ],
+    "background_page": "background.html",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "popup": "popup.html"
+    },
+    "content_scripts": [{
+        "matches": ["http://*/*"],
+        "js": ["jquery.js", "contentscript.js"],
+        "run_at": "document_end"
+    }] 
 }

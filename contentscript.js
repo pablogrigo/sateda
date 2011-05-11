@@ -1,19 +1,14 @@
 
+var host = window.location.host;
 
-chrome.extension.sendRequest({host: window.location.host}, function(response) {
-    console.log(response.source);
-    if (response.source) {
-        console.log('evaluating source code for: ' + window.location.host);
+chrome.extension.sendRequest({host: host}, function(response) {
+    if (response.source)
         eval(response.source);
-    } else {
-        console.log('no source code for: ' + window.location.host);
-    }    
 });
 
-
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-    if (request.what == "host")
-        sendResponse({host: window.location.host});
+    if (request.what == 'host')
+        sendResponse({host: host});
     else
-        sendResponse({}); // snub them.
+        sendResponse({});
 });
