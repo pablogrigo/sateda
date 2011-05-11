@@ -1,0 +1,21 @@
+<script>
+
+
+chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+                
+        if (request.host) {
+            console.log('sending response for: ' + request.host);
+            var source = localStorage.getItem(request.host);
+            console.log('source: ' + source);
+            sendResponse({source: source});
+        } else {
+            console.log('unknown message' + request);
+            sendResponse({}); // snub them.
+        }
+});
+
+</script>
