@@ -14,6 +14,11 @@
     button.secondary {
         
     }
+    .msg {
+        display: none;
+    }
+    div.left {float: left;}
+    div.right {float: right;}
 </style>
 
 
@@ -35,15 +40,17 @@
     function save() {
         executeWithHost(function(host) {
             localStorage.setItem(host, j('#code').val());
+            j('.feedback').text('saved for ' + host).fadeIn().delay(1000).fadeOut();
         });
     }
     function test() {
-        // eval(j('#code').val());
+         eval(j('#code').val());
     }
     function remove() {
         executeWithHost(function(host) {
             localStorage.removeItem(host);
             j('#code').val('');
+            j('.feedback').text('deleted for ' + host).fadeIn().delay(1000).fadeOut();
         });
     }
     
@@ -56,6 +63,11 @@
 
 <textarea id="code"></textarea>
 <br />
-<button id="save" class="primary" onclick="save();">Save</button>
-<button id="test" class="secondary" onclick="test();">Test</button>
-<button id="test" class="secondary" onclick="remove();">Remove for this site</button>
+<div>
+    <div class="left">
+        <button id="save" class="primary" onclick="save();">Save</button>
+        <button id="test" class="secondary" onclick="test();">Test</button>
+        <button id="test" class="secondary" onclick="remove();">Remove for this site</button>
+    </div>
+    <div class="right feedback"></div>
+</div>
