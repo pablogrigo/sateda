@@ -3,6 +3,12 @@
     "version": "1.0",
     "description": "Sateda executes your custom javascript code automatically on each web site", 
     "X-description": "For more information check http://stargate.wikia.com/wiki/Sateda",
+    "homepage_url": "http://twitter.com/pablogrigo",
+    "icons": { 
+        "16":  "icon16.png",
+        "48":  "icon48.png",
+        "128": "icon.png" 
+    },
     
     "permissions": [
         "tabs"
