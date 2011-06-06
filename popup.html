@@ -54,20 +54,35 @@
         });
     }
     
-    
+    function no(sel) {
+        var aux = j('#code').text();
+        aux = aux + '\r\n' + "$('" + sel + "').remove();";
+        j('#code').text(aux);
+    }
+        
     //load the actual code for this site
     executeWithHost(function(host) {
         j('#code').val(localStorage.getItem(host));
     });
 </script>
 
+<label>Write your Javascript code (use $ for jQuery)</label>
 <textarea id="code"></textarea>
 <br />
 <div>
     <div class="left">
+        <label>Remove:</label>
+        <button class="primary" onclick="no('object, embed');">Flash</button>
+        <button class="primary" onclick="no('iframe');">iFrames</button>
+        <button class="primary" onclick="no('script');">Javascript</button>
+        <button class="primary" onclick="no('img');">Images</button>
+    </div>
+</div>
+<div>
+    <div class="left">
+        <label>This site:</label>
         <button id="save" class="primary" onclick="save();">Save</button>
-        <button id="test" class="secondary" onclick="test();">Test</button>
-        <button id="test" class="secondary" onclick="remove();">Remove for this site</button>
+        <button id="test" class="secondary" onclick="remove();">Clean</button>
     </div>
     <div class="right feedback"></div>
 </div>
